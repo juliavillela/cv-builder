@@ -15,5 +15,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('base.urls')), # Include url structure at root or base of site
+    path('', include('base.urls', namespace='base')), # Include url structure at root or base of site
+    path('user/', include('users.urls', namespace='account'))
 ]

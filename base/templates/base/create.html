@@ -1,0 +1,21 @@
+{% extends 'base/layout.html' %}
+
+{% block body %}
+    <section id='step-1'>
+        <form method="POST" action="{% url 'account:login' %}" class='form-control'>
+            {% csrf_token %}
+            <div class='input-group'>
+                <label for='cv_name'>pick a name for this cv: </label>
+                <input type='text' name='cv_name' placeholder="{{request.user.username}}'s cv">
+            </div>
+            <h3>Choose a style</h3>
+            <div class='input-group'>
+                <label for='password' >password</label>
+                <input type='password' name='password'>
+            </div>
+            <input type="submit" value='login' class='btn btn-light'>
+        </form>
+
+    </section>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'users/form_page.html' %}
+
+{% block form %}
+<div class='card' style='margin-top: 2em;'>
+    <div class='card-header'>
+        <h3>Log in</h3>
+    </div>
+    <div class='card-body'>
+        <form method="POST" action="{% url 'account:login' %}">
+            {% csrf_token %}
+            <div class='inline-form-control'>
+                <label for='username'>username</label>
+                <input type='text' name='username'>
+            </div>
+            <div class='inline-form-control'>
+                <label for='password' >password</label>
+                <input type='password' name='password'>
+            </div>
+            <input type="submit" value='login' class='btn btn-light'>
+        </form>
+    </div>
+    <div class='card-footer'>
+        Don't have an accout, yet? <a href="{% url 'account:register' %}">register</a>
+    </div>
+</div>
+
+{% endblock %}

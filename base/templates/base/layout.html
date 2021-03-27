@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>{% block title %}Hello, world! {% endblock %}</title>
+  </head>
+  <body>
+
+
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <a class="navbar-brand" href="#">cv builder</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account:logout' %}">logout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">my cvs</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account:login' %}">login</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">login</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <div class="container">
+                    <div class='card' style='margin-top: 2em;'>
+                      <div class='card-header'>
+                          <h3>Log in</h3>
+                      </div>
+                      <div class='card-body'>
+                          <form method="POST" action="{% url 'account:login' %}">
+                              {% csrf_token %}
+                              <div class='inline-form-control'>
+                                  <label for='username'>username</label>
+                                  <input type='text' name='username'>
+                              </div>
+                              <div class='inline-form-control'>
+                                  <label for='password' >password</label>
+                                  <input type='password' name='password'>
+                              </div>
+                              <input type="submit" value='login' class='btn btn-light'>
+                          </form>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="#">about</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    {% if message %}
+    <p>{{message}}</p>
+    {% endif %}
+    <main role="main" class="container d-flex flex-column align-items-center">
+      {% block body %} 
+      {% endblock %}    
+    </main><!-- /.container -->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

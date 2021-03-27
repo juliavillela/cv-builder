@@ -5,3 +5,5 @@ staticfiles
 *.sqlite3
 
 \.idea/
+
+notes/
