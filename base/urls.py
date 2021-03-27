@@ -7,4 +7,3 @@ urlpatterns = [
     path('', homepage, name='homepage'),
     path('bootstrap/', bootstrap, name='bootstrap'),
 ]
-

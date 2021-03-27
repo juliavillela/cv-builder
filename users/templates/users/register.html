@@ -1,12 +1,12 @@
-{% extends 'base/layout.html' %}
+{% extends 'users/form_page.html' %}
 
-{% block body %}
+{% block form %}
 <div class='card' style='margin-top: 2em;'>
     <div class='card-header'>
         <h3>Log in</h3>
     </div>
     <div class='card-body'>
-        <form method="POST" action="{% url 'register' %}">
+        <form method="POST" action="{% url 'account:register' %}">
             {% csrf_token %}
             <div class='inline-form-control'>
                 <label for='username'>username</label>
@@ -28,7 +28,7 @@
         </form>
     </div>
     <div class='card-footer'>
-        Already have an account? <a href="{% url 'register' %}">login</a>
+        Already have an account? <a href="{% url 'account:login' %}">login</a>
     </div>
 </div>
 
